@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMengStore - Top Up Game Terpercaya</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        :root {
+            --primary: #6366f1;
+            --secondary: #4f46e5;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --success: #10b981;
+            --warning: #f59e0b;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s ease;
+            overflow-x: hidden;
+        }
+        
+        .dark-mode {
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(99, 102, 241, 0.3);
+        }
+        
+        .card {
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .game-card:hover img {
+            transform: scale(1.05);
+        }
+        
+        .game-card img {
+            transition: transform 0.3s ease;
+        }
+        
+        .diamond-option {
+            transition: all 0.2s ease;
+        }
+        
+        .diamond-option:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7);
+            }
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 10px rgba(99, 102, 241, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
+            }
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+        
+        .rotate-y {
+            animation: rotateY 10s linear infinite;
+        }
+        
+        @keyframes rotateY {
+            0% {
+                transform: perspective(800px) rotateY(0deg);
+            }
+            100% {
+                transform: perspective(800px) rotateY(360deg);
+            }
+        }
+        
+        .slide-in {
+            animation: slideIn 0.5s ease-out forwards;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .confetti {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .confetti::after {
+            content: "";
+            position: absolute;
+            top: -100px;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://placehold.co/10x10/ef4444/white'),
+                            url('https://placehold.co/10x10/f59e0b/white'),
+                            url('https://placehold.co/10x10/10b981/white'),
+                            url('https://placehold.co/10x10/6366f1/white');
+            background-repeat: repeat;
+            background-position: 0 0;
+            background-size: 10px 10px;
+            animation: confetti-fall 5s linear infinite;
+            opacity: 0;
+        }
+        
+        @keyframes confetti-fall {
+            0% {
+                background-position: 0 0, 10px 0, 20px 0, 30px 0;
+                opacity: 1;
+            }
+            100% {
+                background-position: 0 1000px, 10px 1000px, 20px 1000px, 30px 1000px;
+                opacity: 0;
+            }
+        }
+        
+        .success-animation {
+            animation: successScale 0.5s ease-out forwards;
+        }
+        
+        @keyframes successScale {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+        
+        /* Toggle switch */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: var(--primary);
+        }
+        
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: var(--primary);
+        }
+        
+        /* Loading spinner */
+        .spinner {
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        
+        .diamond-selected {
+            border: 3px solid var(--primary);
+            background-color: rgba(99, 102, 241, 0.1);
+        }
+        
+        .payment-method-selected {
+            border: 3px solid var(--primary);
+            background-color: rgba(99, 102, 241, 0.1);
+        }
+        
+        .progress-bar {
+            height: 6px;
+            background-color: #e2e8f0;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            transition: width 0.3s ease;
+        }
+        
+        .checkout-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .checkout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .game-header {
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .game-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 100%);
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <!-- Theme Toggle -->
+    <div class="fixed z-50 bottom-5 right-5">
+        <div class="flex items-center">
+            <span class="mr-2 text-sm font-medium text-gray-900 dark:text-gray-100">
+                <i class="fas fa-sun"></i>
+            </span>
+            <label class="relative inline-flex items-center cursor-pointer">
+                <input type="checkbox" value="" id="theme-toggle" class="sr-only peer">
+                <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
+                <span class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">
+                    <i class="fas fa-moon"></i>
+                </span>
+            </label>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="gradient-bg text-white shadow-lg">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <img src="https://placehold.co/40x40" alt="AMengStore logo - Gaming controller with AMeng text in purple gradient" class="rounded-full">
+                    <h1 class="text-2xl font-bold">AMengStore</h1>
+                </div>
+                <div class="hidden md:flex items-center space-x-6">
+                    <a href="#" class="hover:text-gray-200 transition">Beranda</a>
+                    <a href="#games" class="hover:text-gray-200 transition">Game</a>
+                    <a href="#saldo" class="hover:text-gray-200 transition">Saldo</a>
+                    <a href="#faq" class="hover:text-gray-200 transition">FAQ</a>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button id="login-btn" class="bg-white text-indigo-600 px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition hidden">
+                        <i class="fas fa-sign-in-alt mr-2"></i>Masuk
+                    </button>
+                    <button id="logout-btn" class="bg-red-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-red-600 transition hidden">
+                        <i class="fas fa-sign-out-alt mr-2"></i>Keluar
+                    </button>
+                    <button id="profile-btn" class="bg-white text-indigo-600 px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition hidden">
+                        <i class="fas fa-user-circle mr-2"></i>Profil
+                    </button>
+                </div>
+                <button id="mobile-menu-btn" class="md:hidden text-white focus:outline-none">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div id="main-content">
+        <!-- Home Page -->
+        <div id="home-page">
+            <!-- Hero Section -->
+            <section class="gradient-bg text-white py-20">
+                <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 mb-10 md:mb-0 slide-in">
+                        <h1 class="text-4xl md:text-5xl font-bold mb-6">Top Up Game Termurah & Tercepat</h1>
+                        <p class="text-xl mb-8">Segera isi diamond favoritmu dengan proses instan dan aman hanya di AMengStore.</p>
+                        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                            <button id="hero-login-btn" class="bg-white text-indigo-600 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition hidden">
+                                <i class="fas fa-sign-in-alt mr-2"></i>Masuk Sekarang
+                            </button>
+                            <button id="hero-topup-btn" class="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-indigo-600 transition">
+                                <i class="fas fa-gamepad mr-2"></i>Top Up Sekarang
+                            </button>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 flex justify-center">
+                        <img src="https://placehold.co/500x300/4f46e5/ffffff?text=AMengStore" alt="Illustration of game characters celebrating with diamond items floating around them" class="rounded-lg shadow-xl floating">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Saldo Section -->
+            <section id="saldo" class="py-16 bg-gray-50 dark:bg-gray-900">
+                <div class="container mx-auto px-4">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Saldo Saya</h2>
+                        <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Kelola saldo Anda untuk pembelian yang lebih cepat</p>
+                    </div>
+                    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 mx-auto max-w-3xl">
+                        <div class="flex flex-col md:flex-row items-center justify-between">
+                            <div class="flex items-center mb-6 md:mb-0">
+                                <div class="bg-indigo-100 dark:bg-indigo-900 rounded-full p-4 mr-4">
+                                    <i class="fas fa-wallet text-indigo-600 dark:text-indigo-300 text-2xl"></i>
+                                </div>
+                                <div>
+                                    <p class="text-gray-500 dark:text-gray-400 text-sm">Saldo Anda</p>
+                                    <p id="balance-amount" class="text-3xl font-bold text-gray-900 dark:text-white">Rp 0</p>
+                                </div>
+                            </div>
+                            <div class="flex space-x-3">
+                                <button id="topup-balance-btn" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-indigo-700 transition flex items-center">
+                                    <i class="fas fa-plus-circle mr-2"></i> Isi Saldo
+                                </button>
+                                <button id="history-btn" class="bg-white dark:bg-gray-700 text-indigo-600 dark:text-indigo-300 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 dark:hover:bg-gray-600 transition border border-indigo-600 dark:border-indigo-300 flex items-center">
+                                    <i class="fas fa-history mr-2"></i> Riwayat
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Games Section -->
+            <section id="games" class="py-16 bg-white dark:bg-gray-800">
+                <div class="container mx-auto px-4">
+                    <div class="text-center mb-12">
+                        <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Pilih Game Favoritmu</h2>
+                        <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Top up diamond untuk game favoritmu dengan harga terbaik</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
+                        <!-- Game Cards -->
+                        <div class="game-card bg-white dark:bg-gray-700 rounded-xl shadow-md overflow-hidden cursor-pointer transition hover:shadow-lg" data-game="mobile-legends">
+                            <div class="relative pt-[70%] overflow-hidden">
+                                <img src="https://placehold.co/600x400/1e293b/ffffff?text=Mobile+Legends" alt="Mobile Legends game cover featuring heroes in action with logo" class="absolute top-0 left-0 w-full h-full object-cover">
+                            </div>
+                            <div class="p-4">
+                                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Mobile Legends</h3>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">Action, MOBA</span>
+                                    <button class="text-indigo-600 dark:text-indigo-300 hover:text-indigo-800 dark:hover:text-indigo-400">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="game-card bg-white dark:bg-gray-700 rounded-xl shadow-md overflow-hidden cursor-pointer transition hover:shadow-lg" data-game="free-fire">
+                            <div class="relative pt-[70%] overflow-hidden">
+                                <img src="https://placehold.co/600x400/1e293b/ffffff?text=Free+Fire" alt="Free Fire game cover with characters in battle royale setting" class="absolute top-0 left-0 w-full h-full object-cover">
+                            </div>
+                            <div class="p-4">
+                                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Free Fire</h3>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">Battle Royale</span>
+                                    <button class="text-indigo-600 dark:text-indigo-300 hover:text-indigo-800 dark:hover:text-indigo-400">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="game-card bg-white dark:bg-gray-700 rounded-xl shadow-md overflow-hidden cursor-pointer transition hover:shadow-lg" data-game="pubg-mobile">
+                            <div class="relative pt-[70%] overflow-hidden">
+                                <img src="https://placehold.co/600x400/1e293b/ffffff?text=PUBG+Mobile" alt="PUBG Mobile game cover showing soldier in battleground" class="absolute top-0 left-0 w-full h-full object-cover">
+                            </div>
+                            <div class="p-4">
+                                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">PUBG Mobile</h3>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">Battle Royale</span>
+                                    <button class="text-indigo-600 dark:text-indigo-300 hover:text-indigo-800 dark:hover:text-indigo-400">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="game-card bg-white dark:bg-gray-700 rounded-xl shadow-md overflow-hidden cursor-pointer transition hover:shadow-lg" data-game="valorant">
+                            <div class="relative pt-[70%] overflow-hidden">
+                                <img src="https://placehold.co/600x400/1e293b/ffffff?text=Valorant" alt="Valorant game cover featuring futuristic agents" class="absolute top-0 left-0 w-full h-full object-cover">
+                            </div>
+                            <div class="p-4">
+                                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">Valorant</h3>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm text-gray-500 dark:text-gray-400">FPS, Tactical</span>
+                                    <button class="text-indigo-600 dark:text-indigo-300 hover:text-indigo-800 dark:hover:text-indigo-400">
+                                        <i class="fas fa-shopping-cart"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- View All Games Button (center) -->
+                    <div class="text-center">
+                        <button class="bg-indigo-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-indigo-700 transition inline-flex items-center">
+                            <span>Lihat Semua Game</span>
+                            <i class="fas fa-chevron-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Diamond Selection Page -->
+        <div id="diamond-page" class="hidden">
+            <div class="game-header bg-gray-900 text-white py-10 relative">
+                <div class="container mx-auto px-4 relative z-10">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/4 mb-6 md:mb-0">
+                            <img id="selected-game-image" src="https://placehold.co/200x200" alt="Game logo" class="w-full max-w-[200px] rounded-lg shadow-lg">
+                        </div>
+                        <div class="md:w-3/4 md:pl-8">
+                            <h2 id="selected-game-name" class="text-3xl font-bold mb-2">Mobile Legends</h2>
+                            <p class="text-lg mb-4">Pilih jumlah diamond yang ingin kamu beli</p>
+                            <div class="flex items-center">
+                                <span class="bg-yellow-500 text-white px-3 py-1 rounded-full text-xs font-medium mr-3">Populer</span>
+                                <span class="text-gray-300"><i class="fas fa-clock mr-2"></i>Proses instan</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container mx-auto px-4 py-12">
+                <div class="flex flex-col md:flex-row gap-8">
+                    <div class="md:w-2/3">
+                        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 mb-6">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Pilihan Diamond</h3>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                                <!-- Diamond Options -->
+                                <div class="diamond-option bg-white dark:bg-gray-700 rounded-lg p-4 border border-gray-200 dark:border-gray-600 cursor-pointer text-center">
+                                    <div class="flex justify-center mb-2">
+                                        <img src="https://placehold.co/80x80/1e293b/ffffff?text=86+D" alt="Mobile Legends 86 Diamond package" class="w-20 h-20">
+                                    </div>
+                                    <h4 class="font-semibold text-gray-900 dark:text-white">86 Diamond</h4>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400">Rp 20.000</p>
+                                </div>
+                                
+                                <div class="diamond-option bg-white dark:bg-gray-700 rounded-lg p-4 border border-gray-200 dark:border-gray-600 cursor-pointer text-center">
+                                    <div class="flex justify-center mb-2">
+                                        <img src="https://placehold.co/80x80/1e293b/ffffff?text=172+D" alt="Mobile Legends 172 Diamond package" class="w-20 h-20">
+                                    </div>
+                                    <h4 class="font-semibold text-gray-900 dark:text-white">172 Diamond</h4>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400">Rp 40.000</p>
+                                </div>
+                                
+                                <div class="diamond-option bg-white dark:bg-gray-700 rounded-lg p-4 border border-gray-200 dark:border-gray-600 cursor-pointer text-center">
+                                    <div class="flex justify-center mb-2">
+                                        <img src="https://placehold.co/80x80/1e293b/ffffff?text=257+D" alt="Mobile Legends 257 Diamond package" class="w-20 h-20">
+                                    </div>
+                                    <h4 class="font-semibold text-gray-900 dark:text-white">257 Diamond</h4>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400">Rp 60.000</p>
+                                </div>
+                                
+                                <div class="diamond-option bg-white dark:bg-gray-700 rounded-lg p-4 border border-gray-200 dark:border-gray-600 cursor-pointer text-center">
+                                    <div class="flex justify-center mb-2">
+                                        <img src="https://placehold.co/80x80/1e293b/ffffff?text=344+D" alt="Mobile Legends 344 Diamond package" class="w-20 h-20">
+                                    </div>
+                                    <h4 class="font-semibold text-gray-900 dark:text-white">344 Diamond</h4>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400">Rp 80.000</p>
+                                </div>
+                                
+                                <div class="diamond-option bg-white dark:bg-gray-700 rounded-lg p-4 border border-gray-200 dark:border-gray-600 cursor-pointer text-center">
+                                    <div class="flex justify-center mb-2">
+                                        <img src="https://placehold.co/80x80/1e293b/ffffff?text=429+D" alt="Mobile Legends 429 Diamond package" class="w-20 h-20">
+                                    </div>
+                                    <h4 class="font-semibold text-gray-900 dark:text-white">429 Diamond</h4>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400">Rp 100.000</p>
+                                </div>
+                                
+                                <div class="diamond-option bg-white dark:bg-gray-700 rounded-lg p-4 border border-gray-200 dark:border-gray-600 cursor-pointer text-center">
+                                    <div class="flex justify-center mb-2">
+                                        <img src="https://placehold.co/80x80/1e293b/ffffff?text=514+D" alt="Mobile Legends 514 Diamond package" class="w-20 h-20">
+                                    </div>
+                                    <h4 class="font-semibold text-gray-900 dark:text-white">514 Diamond</h4>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400">Rp 120.000</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Masukkan Informasi Akun</h3>
+                            <form id="account-form">
+                                <div class="mb-4">
+                                    <label class="block text-gray-700 dark:text-gray-300 mb-2">Server</label>
+                                    <select class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                                        <option>Indonesia</option>
+                                        <option>Singapore</option>
+                                        <option>Malaysia</option>
+                                    </select>
+                                </div>
+                                <div class="mb-4">
+                                    <label class="block text-gray-700 dark:text-gray-300 mb-2">ID Game</label>
+                                    <input type="text" class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:text-white" placeholder="Masukkan ID Game">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="block text-gray-700 dark:text-gray-300 mb-2">Nickname</label>
+                                    <input type="text" class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:bg-gray-700 dark:border-gray-600 dark:text-white" placeholder="Masukkan Nickname">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <div class="md:w-1/3">
+                        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 sticky top-4">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Ringkasan Pesanan</h3>
+                            <div class="border-b border-gray-200 dark:border-gray-600 pb-4 mb-4">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-gray-600 dark:text-gray-300">Game</span>
+                                    <span id="summary-game" class="font-medium">Mobile Legends</span>
+                                </div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-gray-600 dark:text-gray-300">Jumlah Diamond</span>
+                                    <span id="summary-diamond" class="font-medium">-</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-600 dark:text-gray-300">Harga</span>
+                                    <span id="summary-price" class="font-medium">Rp 0</span>
+                                </div>
+                            </div>
+                            
+                            <button id="next-to-payment-btn" class="w-full bg-indigo-600 text-white py-3 rounded-lg font-medium hover:bg-indigo-700 transition flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                                <span>Lanjut ke Pembayaran</span>
+                                <i class="fas fa-arrow-right ml-2"></i>
+                            </button>
+                            
+                            <div class="mt-4 text-center">
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Dengan melanjutkan, Anda menyetujui <a href="#" class="text-indigo-600 dark:text-indigo-400">Syarat & Ketentuan</a> kami.</p>
+                            </div>
+                            
+                            <div class="mt-6 bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                                <div class="flex items-start">
+                                    <i class="fas fa-shield-alt text-indigo-600 dark:text-indigo-300 mt-1 mr-3"></i>
+                                    <p class="text-sm text-gray-600 dark:text-gray-300">Data Anda aman bersama kami. Proses top up cepat dan 100% aman.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payment Selection Page -->
+        <div id="payment-page" class="hidden">
+            <div class="game-header bg-gray-900 text-white py-10 relative">
+                <div class="container mx-auto px-4 relative z-10">
+                    <div class="flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/4 mb-6 md:mb-0">
+                            <img id="payment-game-image" src="https://placehold.co/200x200" alt="Game logo" class="w-full max-w-[200px] rounded-lg shadow-lg">
+                        </div>
+                        <div class="md:w-3/4 md:pl-8">
+                            <h2 id="payment-game-name" class="text-3xl font-bold mb-2">Mobile Legends</h2>
+                            <p class="text-lg mb-4">Pilih metode pembayaran yang kamu inginkan</p>
+                            <div class="flex items-center">
+                                <span class="bg-yellow-500 text-white px-3 py-1 rounded-full text-xs font-medium mr-3">Populer</span>
+                                <span class="text-gray-300"><i class="fas fa-shield-alt mr-2"></i>Pembayaran aman</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container mx-auto px-4 py-12">
+                <div class="flex flex-col md:flex-row gap-8">
+                    <div class="md:w-2/3">
+                        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 mb-6">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Metode Pembayaran</h3>
+                            
+                            <div class="mb-6">
+                                <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3">E-Wallet</h4>
+                                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                                    <label class="payment-method-option">
+                                        <input type="radio" name="payment-method" value="dana" class="hidden peer">
+                                        <div class="p-3 rounded-lg border border-gray-300 peer-checked:border-indigo-600 peer-checked:bg-indigo-50 dark:peer-checked:bg-indigo-900 dark:peer-checked:border-indigo-300 cursor-pointer transition h-full">
+                                            <div class="flex items-center">
+                                                <img src="https://placehold.co/40x25/1e293b/ffffff?text=DANA" alt="DANA logo" class="w-10 h-6 object-contain mr-2">
+                                                <span class="text-sm">DANA</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    
+                                    <label class="payment-method-option">
+                                        <input type="radio" name="payment-method" value="ovo" class="hidden peer">
+                                        <div class="p-3 rounded-lg border border-gray-300 peer-checked:border-indigo-600 peer-checked:bg-indigo-50 dark:peer-checked:bg-indigo-900 dark:peer-checked:border-indigo-300 cursor-pointer transition h-full">
+                                            <div class="flex items-center">
+                                                <img src="https://placehold.co/40x25/1e293b/ffffff?text=OVO" alt="OVO logo" class="w-10 h-6 object-contain mr-2">
+                                                <span class="text-sm">OVO</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    
+                                    <label class="payment-method-option">
+                                        <input type="radio" name="payment-method" value="gopay" class="hidden peer">
+                                        <div class="p-3 rounded-lg border border-gray-300 peer-checked:border-indigo-600 peer-checked:bg-indigo-50 dark:peer-checked:bg-indigo-900 dark:peer-checked:border-indigo-300 cursor-pointer transition h-full">
+                                            <div class="flex items-center">
+                                                <img src="https://placehold.co/40x25/1e293b/ffffff?text=GOPAY" alt="Gopay logo" class="w-10 h-6 object-contain mr-2">
+                                                <span class="text-sm">Gopay</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    
+                                    <label class="payment-method-option">
+                                        <input type="radio" name="payment-method" value="linkaja" class="hidden peer">
+                                        <div class="p-3 rounded-lg border border-gray-300 peer-checked:border-indigo-600 peer-checked:bg-indigo-50 dark:peer-checked:bg-indigo-900 dark:peer-checked:border-indigo-300 cursor-pointer transition h-full">
+                                            <div class="flex items-center">
+                                                <img src="https://placehold.co/40x25/1e293b/ffffff?text=LINK+AJ" alt="LinkAja logo" class="w-10 h-6 object-contain mr-2">
+                                                <span class="text-sm">LinkAja</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    
+                                    <label class="payment-method-option">
+                                        <input type="radio" name="payment-method" value="shopee" class="hidden peer">
+                                        <div class="p-3 rounded-lg border border-gray-300 peer-checked:border-indigo-600 peer-checked:bg-indigo-50 dark:peer-checked:bg-indigo-900 dark:peer-checked:border-indigo-300 cursor-pointer transition h-full">
+                                            <div class="flex items-center">
+                                                <img src="https://placehold.co/40x25/1e293b/ffffff?text=ShopeePay" alt="ShopeePay logo" class="w-10 h-6 object-contain mr-2">
+                                                <span class="text-sm">ShopeePay</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3">Virtual Account</h4>
+                                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                                    <label class="payment-method-option">
+                                        <input type="radio" name="payment-method" value="bca" class="hidden peer">
+                                        <div class="p-3 rounded-lg border border-gray-300 peer-checked:border-indigo-600 peer-checked:bg-indigo-50 dark:peer-checked:bg-indigo-900 dark:peer-checked:border-indigo-300 cursor-pointer transition h-full">
+                                            <div class="flex items-center">
+                                                <img src="https://placehold.co/40x25/1e293b/ffffff?text=BCA" alt="BCA logo" class="w-10 h-6 object-contain mr-2">
+                                                <span class="text-sm">BCA</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    
+                                    <label class="payment-method-option">
+                                        <input type="radio" name="payment-method" value="mandiri" class="hidden peer">
+                                        <div class="p-3 rounded-lg border border-gray-300 peer-checked:border-indigo-600 peer-checked:bg-indigo-50 dark:peer-checked:bg-indigo-900 dark:peer-checked:border-indigo-300 cursor-pointer transition h-full">
+                                            <div class="flex items-center">
+                                                <img src="https://placehold.co/40x25/1e293b/ffffff?text=MANDIRI" alt="Mandiri logo" class="w-10 h-6 object-contain mr-2">
+                                                <span class="text-sm">Mandiri</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    
+                                    <label class="payment-method-option">
+                                        <input type="radio" name="payment-method" value="bni" class="hidden peer">
+                                        <div class="p-3 rounded-lg border border-gray-300 peer-checked:border-indigo-600 peer-checked:bg-indigo-50 dark:peer-checked:bg-indigo-900 dark:peer-checked:border-indigo-300 cursor-pointer transition h-full">
+                                            <div class="flex items-center">
+                                                <img src="https://placehold.co/40x25/1e293b/ffffff?text=BNI" alt="BNI logo" class="w-10 h-6 object-contain mr-2">
+                                                <span class="text-sm">BNI</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    
+                                    <label class="payment-method-option">
+                                        <input type="radio" name="payment-method" value="bri" class="hidden peer">
+                                        <div class="p-3 rounded-lg border border-gray-300 peer-checked:border-indigo-600 peer-checked:bg-indigo-50 dark:peer-checked:bg-indigo-900 dark:peer-checked:border-indigo-300 cursor-pointer transition h-full">
+                                            <div class="flex items-center">
+                                                <img src="https://placehold.co/40x25/1e293b/ffffff?text=BRI" alt="BRI logo" class="w-10 h-6 object-contain mr-2">
+                                                <span class="text-sm">BRI</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                            
+                            <div>
+                                <h4 class="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-3">Retail</h4>
+                                <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                                    <label class="payment-method-option">
+                                        <input type="radio" name="payment-method" value="alfamart" class="hidden peer">
+                                        <div class="p-3 rounded-lg border border-gray-300 peer-checked:border-indigo-600 peer-checked:bg-indigo-50 dark:peer-checked:bg-indigo-900 dark:peer-checked:border-indigo-300 cursor-pointer transition h-full">
+                                            <div class="flex items-center">
+                                                <img src="https://placehold.co/40x25/1e293b/ffffff?text=ALFAMART" alt="Alfamart logo" class="w-10 h-6 object-contain mr-2">
+                                                <span class="text-sm">Alfamart</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                    
+                                    <label class="payment-method-option">
+                                        <input type="radio" name="payment-method" value="indomaret" class="hidden peer">
+                                        <div class="p-3 rounded-lg border border-gray-300 peer-checked:border-indigo-600 peer-checked:bg-indigo-50 dark:peer-checked:bg-indigo-900 dark:peer-checked:border-indigo-300 cursor-pointer transition h-full">
+                                            <div class="flex items-center">
+                                                <img src="https://placehold.co/40x25/1e293b/ffffff?text=INDOMARET" alt="Indomaret logo" class="w-10 h-6 object-contain mr-2">
+                                                <span class="text-sm">Indomaret</span>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="md:w-1/3">
+                        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 sticky top-4">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">Ringkasan Pesanan</h3>
+                            <div class="border-b border-gray-200 dark:border-gray-600 pb-4 mb-4">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-gray-600 dark:text-gray-300">Game</span>
+                                    <span id="payment-summary-game" class="font-medium">Mobile Legends</span>
+                                </div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-gray-600 dark:text-gray-300">Jumlah Diamond</span>
+                                    <span id="payment-summary-diamond" class="font-medium">86 Diamond</span>
+                                </div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <span class="text-gray-600 dark:text-gray-300">Harga</span>
+                                    <span id="payment-summary-price" class="font-medium">Rp 20.000</span>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-gray-600 dark:text-gray-300">Metode Pembayaran</span>
+                                    <span id="payment-summary-method" class="font-medium">-</span>
+                                </div>
+                            </div>
+                            
+                            <button id="confirm-payment-btn" class="w-full bg-indigo-600 text-white py-3 rounded-lg font-medium hover:bg-indigo-700 transition flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                                <span>Konfirmasi Pembayaran</span>
+                                <i class="fas fa-lock ml-2"></i>
+                            </button>
+                            
+                            <div class="mt-4 text-center">
+                                <p class="text-sm text-gray-500 dark:text-gray-400">Dengan melanjutkan, Anda menyetujui <a href="#" class="text-indigo-600 dark:text-indigo-400">Syarat & Ketentuan</a> kami.</p>
+                            </div>
+                            
+                            <div class="mt-6 bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                                <div class="flex items-start">
+                                    <i class="fas fa-shield-alt text-indigo-600 dark:text-indigo-300 mt-1 mr-3"></i>
+                                    <p class="text-sm text-gray-600 dark:text-gray-300">Pembayaran Anda aman dengan sistem terenkripsi.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payment Success Page -->
+        <div id="success-page" class="hidden">
+            <div class="container mx-auto px-4 py-20 text-center">
+                <div class="max-w-2xl mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-lg p-12 success-animation">
+                    <div class="flex justify-center mb-8">
+                        <div class="bg-green-100 dark:bg-green-900 rounded-full p-6">
+                            <i class="fas fa-check-circle text-green-600 dark:text-green-300 text-6xl"></i>
+                        </div>
+                    </div>
+                    
+                    <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-4">Pembayaran Berhasil!</h2>
+                    <p class="text-lg text-gray-600 dark:text-gray-400 mb-6">Diamond akan segera dikirim ke akun game Anda</p>
+                    
+                    <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-6 mb-8 text-left">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-gray-600 dark:text-gray-300">Order ID</span>
+                            <span class="font-medium">AMENG789456</span>
+                        </div>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-gray-600 dark:text-gray-300">Game</span>
+                            <span id="success-game" class="font-medium">Mobile Legends</span>
+                        </div>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-gray-600 dark:text-gray-300">Jumlah Diamond</span>
+                            <span id="success-diamond" class="font-medium">86 Diamond</span>
+                        </div>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-gray-600 dark:text-gray-300">Total Pembayaran</span>
+                            <span id="success-payment" class="font-medium text-green-600 dark:text-green-300">Rp 20.000</span>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-gray-600 dark:text-gray-300">Status</span>
+                            <span class="px-3 py-1 bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-300 rounded-full text-sm font-medium">Berhasil</span>
+                        </div>
+                    </div>
+                    
+                    <p class="text-gray-500 dark:text-gray-400 mb-8">Kami telah mengirimkan detail transaksi ke email Anda. Jika diamond tidak masuk dalam 30 menit, silakan hubungi Customer Service kami.</p>
+                    
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <button id="back-to-home-btn" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-indigo-700 transition">
+                            Kembali ke Beranda
+                        </button>
+                        <button id="check-order-btn" class="bg-white dark:bg-gray-700 text-indigo-600 dark:text-indigo-300 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 dark:hover:bg-gray-600 transition border border-indigo-600 dark:border-indigo-300">
+                            Cek Status Order
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Authentication Modals -->
+    <div id="login-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+        <div class="bg-white dark:bg-gray-800 rounded-lg p-8 max-w-md w-full mx-4 slide-in">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Masuk ke AMengStore</h2>
+                <button id="close-login-modal" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="login-form" class="space-y-4">
+                <div>
+                    <label for="login-email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
+                    <input type="email" id="login-email" required class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                </div>
+                <div>
+                    <label for="login-password" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Password</label>
+                    <input type="password" id="login-password" required class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                </div>
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                        <input type="checkbox" id="remember-me" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                        <label for="remember-me" class="ml-2 block text-sm text-gray-700 dark:text-gray-300">Ingat saya</label>
+                    </div>
+                    <a href="#" class="text-sm text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">Lupa password?</a>
+                </div>
+                <button type="submit" class="w-full bg-indigo-600 text-white py-2 rounded-lg font-medium hover:bg-indigo-700 transition">Masuk</button>
+            </form>
+            <div class="mt-4 text-center">
+                <p class="text-sm text-gray-600 dark:text-gray-400">Belum punya akun? <button id="show-register-modal" class="text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300 font-medium">Daftar sekarang</button></p>
+            </div>
+            <div class="mt-6">
+                <div class="relative">
+                    <div class="absolute inset-0 flex items-center">
+                        <div class="w-full border-t border-gray-300 dark:border-gray-600"></div>
+                    </div>
+                    <div class="relative flex justify-center text-sm">
+                        <span class="px-2 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400">atau masuk dengan</span>
+                    </div>
+                </div>
+                <div class="mt-4 grid grid-cols-2 gap-3">
+                    <button class="flex items-center justify-center gap-2 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 py-2 px-4 rounded-lg border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600 transition">
+                        <i class="fab fa-google text-red-500"></i>
+                        <span>Google</span>
+                    </button>
+                    <button class="flex items-center justify-center gap-2 bg-white dark:bg-gray-700 text-gray-700 dark:text-gray-300 py-2 px-4 rounded-lg border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-600 transition">
+                        <i class="fab fa-facebook-f text-blue-600"></i>
+                        <span>Facebook</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="register-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+        <div class="bg-white dark:bg-gray-800 rounded-lg p-8 max-w-md w-full mx-4 slide-in">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Daftar ke AMengStore</h2>
+                <button id="close-register-modal" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <form id="register-form" class="space-y-4">
+                <div>
+                    <label for="register-name" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Nama Lengkap</label>
+                    <input type="text" id="register-name" required class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                </div>
+                <div>
+                    <label for="register-email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Email</label>
+                    <input type="email" id="register-email" required class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                </div>
+                <div>
+                    <label for="register-password" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Password</label>
+                    <input type="password" id="register-password" required class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                </div>
+                <div>
+                    <label for="register-confirm-password" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Konfirmasi Password</label>
+                    <input type="password" id="register-confirm-password" required class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                </div>
+                <div class="flex items-center">
+                    <input type="checkbox" id="agree-terms" required class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                    <label for="agree-terms" class="ml-2 block text-sm text-gray-700 dark:text-gray-300">Saya menyetujui <a href="#" class="text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300">Syarat & Ketentuan</a></label>
+                </div>
+                <button type="submit" class="w-full bg-indigo-600 text-white py-2 rounded-lg font-medium hover:bg-indigo-700 transition">Daftar</button>
+            </form>
+            <div class="mt-4 text-center">
+                <p class="text-sm text-gray-600 dark:text-gray-400">Sudah punya akun? <button id="show-login-modal" class="text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 dark:hover:text-indigo-300 font-medium">Masuk sekarang</button></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden hidden gradient-bg text-white fixed inset-0 z-40 pt-20">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col space-y-6 text-center py-8">
+                <a href="#" class="block py-2 hover:text-gray-200 transition">Beranda</a>
+                <a href="#games" class="block py-2 hover:text-gray-200 transition">Game</a>
+                <a href="#saldo" class="block py-2 hover:text-gray-200 transition">Saldo</a>
+                <a href="#faq" class="block py-2 hover:text-gray-200 transition">FAQ</a>
+                <div id="mobile-auth-buttons" class="pt-6">
+                    <button id="mobile-login-btn" class="bg-white text-indigo-600 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition w-full mx-auto block mb-4">
+                        <i class="fas fa-sign-in-alt mr-2"></i>Masuk
+                    </button>
+                </div>
+            </div>
+        </div>
+        <button id="close-mobile-menu-btn" class="absolute top-5 right-5 text-white text-2xl">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        // Check for saved user preference or use system preference
+        if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            body.classList.add('dark-mode');
+            themeToggle.checked = true;
+        } else {
+            body.classList.add('light-mode');
+            themeToggle.checked = false;
+        }
+
+        themeToggle.addEventListener('change', function() {
+            if (this.checked) {
+                body.classList.remove('light-mode');
+                body.classList.add('dark-mode');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.classList.remove('dark-mode');
+                body.classList.add('light-mode');
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const closeMobileMenuBtn = document.getElementById('close-mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeMobileMenuBtn.addEventListener('click', function() {
+            mobileMenu.classList.add('hidden');
+            document.body.style.overflow = '';
+        });
+
+        // Login/Register Modals
+        const loginBtn = document.getElementById('login-btn');
+        const heroLoginBtn = document.getElementById('hero-login-btn');
+        const mobileLoginBtn = document.getElementById('mobile-login-btn');
+        const registerBtn = document.getElementById('register-btn');
+        const loginModal = document.getElementById('login-modal');
+        const registerModal = document.getElementById('register-modal');
+        const closeLoginModal = document.getElementById('close-login-modal');
+        const closeRegisterModal = document.getElementById('close-register-modal');
+        const showRegisterModal = document.getElementById('show-register-modal');
+        const showLoginModal = document.getElementById('show-login-modal');
+
+        function openLoginModal() {
+            loginModal.classList.remove('hidden');
+            registerModal.classList.add('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function openRegisterModal() {
+            registerModal.classList.remove('hidden');
+            loginModal.classList.add('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModals() {
+            loginModal.classList.add('hidden');
+            registerModal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+
+        loginBtn?.addEventListener('click', openLoginModal);
+        heroLoginBtn?.addEventListener('click', openLoginModal);
+        mobileLoginBtn?.addEventListener('click', openLoginModal);
+        registerBtn?.addEventListener('click', openRegisterModal);
+        closeLoginModal.addEventListener('click', closeModals);
+        closeRegisterModal.addEventListener('click', closeModals);
+        showRegisterModal.addEventListener('click', openRegisterModal);
+        showLoginModal.addEventListener('click', openLoginModal);
+
+        // Diamond Selection Logic
+        const diamondOptions = document.querySelectorAll('.diamond-option');
+        const diamondPage = document.getElementById('diamond-page');
+        const homePage = document.getElementById('home-page');
+        const heroTopUpBtn = document.getElementById('hero-topup-btn');
+        const summaryGame = document.getElementById('summary-game');
+        const summaryDiamond = document.getElementById('summary-diamond');
+        const summaryPrice = document.getElementById('summary-price');
+        const paymentSummaryGame = document.getElementById('payment-summary-game');
+        const paymentSummaryDiamond = document.getElementById('payment-summary-diamond');
+        const paymentSummaryPrice = document.getElementById('payment-summary-price');
+        const selectedGameImage = document.getElementById('selected-game-image');
+        const selectedGameName = document.getElementById('selected-game-name');
+        const nextToPaymentBtn = document.getElementById('next-to-payment-btn');
+        const paymentGameImage = document.getElementById('payment-game-image');
+        const paymentGameName = document.getElementById('payment-game-name');
+
+        let selectedDiamond = null;
+
+        // Game selection from home page
+        heroTopUpBtn.addEventListener('click', function() {
+            // Default to Mobile Legends
+            goToDiamondPage({
+                game: 'Mobile Legends',
+                image: 'https://placehold.co/200x200/1e293b/ffffff?text=Mobile+Legends'
+            });
+        });
+
+        // Game selection from game cards
+        document.querySelectorAll('.game-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const gameName = card.querySelector('h3').textContent;
+                const gameImage = card.querySelector('img').src;
+                goToDiamondPage({
+                    game: gameName,
+                    image: gameImage
+                });
+            });
+        });
+
+        function goToDiamondPage(gameInfo) {
+            homePage.classList.add('hidden');
+            diamondPage.classList.remove('hidden');
+            
+            // Set game info
+            selectedGameImage.src = gameInfo.image;
+            selectedGameImage.alt = gameInfo.game + ' logo';
+            selectedGameName.textContent = gameInfo.game;
+            
+            // For summary
+            summaryGame.textContent = gameInfo.game;
+            paymentSummaryGame.textContent = gameInfo.game;
+            paymentGameName.textContent = gameInfo.game;
+            paymentGameImage.src = gameInfo.image;
+            paymentGameImage.alt = gameInfo.game + ' logo';
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Diamond selection
+        diamondOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                // Remove selected class from all options
+                diamondOptions.forEach(opt => {
+                    opt.classList.remove('diamond-selected');
+                });
+                
+                // Add selected class to clicked option
+                this.classList.add('diamond-selected');
+                
+                // Get diamond info
+                const diamondAmount = this.querySelector('h4').textContent;
+                const diamondPrice = this.querySelector('p').textContent;
+                
+                // Set diamond info
+                selectedDiamond = {
+                    amount: diamondAmount,
+                    price: diamondPrice
+                };
+                
+                summaryDiamond.textContent = diamondAmount;
+                summaryPrice.textContent = diamondPrice;
+                paymentSummaryDiamond.textContent = diamondAmount;
+                paymentSummaryPrice.textContent = diamondPrice;
+                
+                // Enable next button
+                nextToPaymentBtn.disabled = false;
+            });
+        });
+
+        // Next to payment page
+        nextToPaymentBtn.addEventListener('click', function() {
+            diamondPage.classList.add('hidden');
+            document.getElementById('payment-page').classList.remove('hidden');
+            window.scrollTo(0, 0);
+        });
+
+        // Payment Method Selection
+        const paymentMethodOptions = document.querySelectorAll('.payment-method-option');
+        const confirmPaymentBtn = document.getElementById('confirm-payment-btn');
+        const paymentSummaryMethod = document.getElementById('payment-summary-method');
+        const successPage = document.getElementById('success-page');
+        const successGame = document.getElementById('success-game');
+        const successDiamond = document.getElementById('success-diamond');
+        const successPayment = document.getElementById('success-payment');
+        const backToHomeBtn = document.getElementById('back-to-home-btn');
+        const checkOrderBtn = document.getElementById('check-order-btn');
+
+        paymentMethodOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                // Remove selected class from all options
+                paymentMethodOptions.forEach(opt => {
+                    opt.classList.remove('payment-method-selected');
+                });
+                
+                // Add selected class to clicked option
+                this.classList.add('payment-method-selected');
+                
+                // Get payment method info
+                const methodName = this.querySelector('span').textContent;
+                paymentSummaryMethod.textContent = methodName;
+                
+                // Enable confirm button
+                confirmPaymentBtn.disabled = false;
+            });
+        });
+
+        // Confirm payment
+        confirmPaymentBtn.addEventListener('click', function() {
+            document.getElementById('payment-page').classList.add('hidden');
+            successPage.classList.remove('hidden');
+            
+            // Set success details
+            successGame.textContent = paymentSummaryGame.textContent;
+            successDiamond.textContent = paymentSummaryDiamond.textContent;
+            successPayment.textContent = paymentSummaryPrice.textContent;
+            
+            window.scrollTo(0, 0);
+        });
+
+        // Back to home from success page
+        backToHomeBtn.addEventListener('click', function() {
+            successPage.classList.add('hidden');
+            homePage.classList.remove('hidden');
+            window.scrollTo(0, 0);
+            
+            // Reset selections
+            diamondOptions.forEach(opt => {
+                opt.classList.remove('diamond-selected');
+            });
+            paymentMethodOptions.forEach(opt => {
+                opt.classList.remove('payment-method-selected');
+            });
+            nextToPaymentBtn.disabled = true;
+            confirmPaymentBtn.disabled = true;
+            selectedDiamond = null;
+        });
+
+        // Balance top up modal
+        const topupBalanceBtn = document.getElementById('topup-balance-btn');
+        const topupModal = document.getElementById('topup-modal');
+        const closeTopupModal = document.getElementById('close-topup-modal');
+        const paymentSuccessModal = document.getElementById('payment-success-modal');
+        const closePaymentSuccess = document.getElementById('close-payment-success');
+        const successAmount = document.getElementById('success-amount');
+        const balanceAmount = document.getElementById('balance-amount');
+
+        topupBalanceBtn.addEventListener('click', function() {
+            topupModal.classList.remove('hidden');
+        });
+
+        closeTopupModal.addEventListener('click', function() {
+            topupModal.classList.add('hidden');
+        });
+
+        closePaymentSuccess.addEventListener('click', function() {
+            paymentSuccessModal.classList.add('hidden');
+        });
+
+        // Sample balance update
+        document.getElementById('topup-form')?.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const amount = document.getElementById('topup-amount').value;
+            successAmount.textContent = 'Rp ' + parseInt(amount).toLocaleString('id-ID');
+            balanceAmount.textContent = 'Rp ' + parseInt(amount).toLocaleString('id-ID');
+            
+            topupModal.classList.add('hidden');
+            paymentSuccessModal.classList.remove('hidden');
+        });
+
+        // Mobile menu login
+        mobileLoginBtn.addEventListener('click', function() {
+            mobileMenu.classList.add('hidden');
+            document.body.style.overflow = '';
+            openLoginModal();
+        });
+    </script>
+</body>
+</html>
